@@ -1,0 +1,109 @@
+print ("Bienvenidos a ¡Adivina el número!")
+print ("¿Listos para jugar?")
+
+
+# generacion del numero aleatorio
+import random
+numeroAdivinar = random.randrange (1,101)
+
+#print (numeroAdivinar)
+
+# registro de jugadores
+
+jugador1 = input ("Jugador 1 por favor ingrese su nombre: " )
+print (f"Hola {jugador1} Bienvenido al juego")
+
+jugador2 = input ("Jugador 2 por favor ingrese su nombre: " )
+print (f"Hola {jugador2} Bienvenido al juego")
+
+# adivinanzas de los jugadores y validacion de respuestas.
+
+print ("Comencemos \nDe a uno ingresaran un numero del 1 al 100\nTienen 5 oportunidades para lograr adivinarlo")
+
+numeroIntentos= 1
+puntajejugador1 = 0
+puntajejugador2 = 0
+
+
+while numeroIntentos <= 5:
+   print (f"Este es el intento n° {numeroIntentos}")  
+   print (f"Turno del Jugador {jugador1} ")
+   intentojugador1 = int (input ("Ingrese su intento de adivinanza: "))
+   print (f"{jugador1} Has ingresado el número: {intentojugador1}")
+
+   if intentojugador1 > numeroAdivinar:
+    print ("¡Que lástima! Tu numero ingresado es mayor" )
+   elif intentojugador1 < numeroAdivinar:
+    print ("¡Que lástima! Tu número ingresado es menor")
+   elif intentojugador1 == numeroAdivinar:
+    print ("¡HAS GANADO!", "FELICITACIONES")
+    break      
+   
+   
+   print (f"Turno del Jugador {jugador2} ")
+   intentojugador2 = int (input ("Ingrese su intento de adivinanza: "))
+   print (f"{jugador2} Has ingresado el número: {intentojugador2}")
+   
+
+   if intentojugador2 > numeroAdivinar:
+    print ("¡Que lástima!Tu numero ingresado es mayor")
+   elif intentojugador2 < numeroAdivinar:
+    print ("¡Que lástima! Tu número ingresado es menor")
+   elif intentojugador2 == numeroAdivinar:
+    print ("¡HAS GANADO!", "FELICITACIONES")
+    break 
+
+   
+   numeroIntentos = numeroIntentos + 1
+
+   
+   def incrementarpuntaje (numeroIngresado , jugador):
+    global numeroAdivinar
+    global intentojugador1
+    global intentojugador2
+    global puntajejugador1
+    global puntajejugador2
+    difentreIngresadoyAdivinar = abs(numeroIngresado - numeroAdivinar)
+
+    if difentreIngresadoyAdivinar >= 1 and difentreIngresadoyAdivinar <=5:
+      if jugador == jugador1:
+       puntajejugador1 += 10
+      else:
+        puntajejugador2 += 10
+    elif difentreIngresadoyAdivinar > 5 and difentreIngresadoyAdivinar <= 10:
+      if jugador == jugador1:
+       puntajejugador1 += 5
+      else:
+        puntajejugador2 += 5
+    
+
+   incrementarpuntaje (intentojugador1 , jugador1)
+   incrementarpuntaje (intentojugador2 , jugador2)
+
+def incrementarpuntaje (numeroIngresado , jugador):
+    global numeroAdivinar
+    global intentojugador1
+    global intentojugador2
+    global puntajejugador1
+    global puntajejugador2
+    difentreIngresadoyAdivinar = abs(numeroIngresado - numeroAdivinar)
+
+    if difentreIngresadoyAdivinar == 0:
+      if jugador == jugador1:
+       puntajejugador1 += 50
+      else: 
+       puntajejugador2 += 50
+
+incrementarpuntaje (intentojugador1 , jugador1)
+incrementarpuntaje (intentojugador2 , jugador2)
+
+print (f"El número a adivinar era: {numeroAdivinar}" )
+
+print (f"""
+Los puntajes finales son:
+Puntaje de {jugador1}: {puntajejugador1}
+Puntaje de {jugador2}: {puntajejugador2}
+
+Los esperamos nuevamente para divertirse con nosotros
+ 
+""")
