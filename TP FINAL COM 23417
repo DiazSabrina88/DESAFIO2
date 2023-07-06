@@ -26,37 +26,7 @@ puntajejugador2 = 0
 
 
 while numeroIntentos <= 5:
-   print (f"Este es el intento n° {numeroIntentos}")  
-   print (f"Turno del Jugador {jugador1} ")
-   intentojugador1 = int (input ("Ingrese su intento de adivinanza: "))
-   print (f"{jugador1} Has ingresado el número: {intentojugador1}")
 
-   if intentojugador1 > numeroAdivinar:
-    print ("¡Que lástima! Tu numero ingresado es mayor" )
-   elif intentojugador1 < numeroAdivinar:
-    print ("¡Que lástima! Tu número ingresado es menor")
-   elif intentojugador1 == numeroAdivinar:
-    print ("¡HAS GANADO!", "FELICITACIONES")
-    break      
-   
-   
-   print (f"Turno del Jugador {jugador2} ")
-   intentojugador2 = int (input ("Ingrese su intento de adivinanza: "))
-   print (f"{jugador2} Has ingresado el número: {intentojugador2}")
-   
-
-   if intentojugador2 > numeroAdivinar:
-    print ("¡Que lástima!Tu numero ingresado es mayor")
-   elif intentojugador2 < numeroAdivinar:
-    print ("¡Que lástima! Tu número ingresado es menor")
-   elif intentojugador2 == numeroAdivinar:
-    print ("¡HAS GANADO!", "FELICITACIONES")
-    break 
-
-   
-   numeroIntentos = numeroIntentos + 1
-
-   
    def incrementarpuntaje (numeroIngresado , jugador):
     global numeroAdivinar
     global intentojugador1
@@ -76,10 +46,60 @@ while numeroIntentos <= 5:
       else:
         puntajejugador2 += 5
     
+    return (puntajejugador1 , puntajejugador2) 
+     
 
+   print (f"Este es el intento n° {numeroIntentos}")  
+   print (f"Turno del Jugador {jugador1} ")
+   
+   while True:
+    try:
+     intentojugador1 = int(input ("Ingrese su intento de adivinanza: "))
+     print (f"{jugador1} Has ingresado el número: {intentojugador1}")
+     if intentojugador1 <= 0 or intentojugador1 >= 100:
+       print ("Ingrese un numero entre 0 y 100")
+     else:  
+      break
+    except:
+      print ("Ingrese un numero entero")
+
+   if intentojugador1 > numeroAdivinar:
+    print ("¡Que lástima! Tu numero ingresado es mayor" )
+   elif intentojugador1 < numeroAdivinar:
+    print ("¡Que lástima! Tu número ingresado es menor")
+   elif intentojugador1 == numeroAdivinar:
+    print ("¡HAS GANADO!", "FELICITACIONES")
+    break      
+   
    incrementarpuntaje (intentojugador1 , jugador1)
-   incrementarpuntaje (intentojugador2 , jugador2)
+  
 
+   print (f"Turno del Jugador {jugador2} ")
+
+   while True:
+    try:
+     intentojugador2 = int (input ("Ingrese su intento de adivinanza: "))
+     print (f"{jugador2} Has ingresado el número: {intentojugador2}")
+     if intentojugador2 <= 0 or intentojugador2 >= 100:
+       print ("Ingrese un numero entre 0 y 100")
+     else:  
+      break
+    except:
+      print ("Ingrese un numero entero")
+
+   if intentojugador2 > numeroAdivinar:
+    print ("¡Que lástima!Tu numero ingresado es mayor")
+   elif intentojugador2 < numeroAdivinar:
+    print ("¡Que lástima! Tu número ingresado es menor")
+   elif intentojugador2 == numeroAdivinar:
+    print ("¡HAS GANADO!", "FELICITACIONES")
+    break 
+
+   incrementarpuntaje (intentojugador2 , jugador2)
+   
+   numeroIntentos = numeroIntentos + 1
+   
+ 
 def incrementarpuntaje (numeroIngresado , jugador):
     global numeroAdivinar
     global intentojugador1
@@ -107,3 +127,8 @@ Puntaje de {jugador2}: {puntajejugador2}
 Los esperamos nuevamente para divertirse con nosotros
  
 """)
+
+
+
+
+
